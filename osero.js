@@ -15,6 +15,27 @@ let stones = [
   [0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+//勝敗
+const winner = () => {
+  if (stones.filter((e) => e.includes(0)).length) {
+    //石を置く場所がなくなった場合
+  } else {
+    let player1 = 0;
+    for (let i = 0; i < 8; i++) {
+      player1 += stones[i].filter((s) => s < 2).length;
+    }
+    const user = document.getElementById("user");
+    if (player1 > 32) {
+      user.textContent = `白が${player1}個で勝ち`;
+    } else if (player1 < 32) {
+      user.textContent = `黒が${64 - player1}個で勝ち`;
+    } else {
+      user.textContent = "引き分け";
+    }
+    user.style.color = "#ff0000";
+  }
+};
+
 //最新の情報に画面を更新
 const reflashStage = () => {
   for (let x = 0; x < 8; x++) {
@@ -25,6 +46,7 @@ const reflashStage = () => {
   }
   const user = document.getElementById("user");
   user.textContent = counter % 2 ? "黒の番" : "白の番";
+  if (counter > 59) winner();
 };
 
 //パス
@@ -97,7 +119,7 @@ const putStone = (id) => {
     stones[x][y] = player;
     counter += 1;
   } else {
-    alert("置けません");
+    console.log("置けません");
   }
 
   reflashStage();
