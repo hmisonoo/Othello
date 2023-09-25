@@ -1,0 +1,43 @@
+#user,
+#controler {
+  text-align: center;
+  padding: 20px;
+}
+
+#stage {
+  display: grid;
+  grid-template-columns: repeat(8, 50px);
+  grid-template-rows: repeat(8, 50px);
+  gap: 1px;
+  background-color: darkgreen;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98%;
+  height: 98%;
+  border: solid #000;
+  border-width: 1px;
+}
+
+.stone {
+  height: 90%;
+  width: 90%;
+  border: solid 1px;
+  border-radius: 50%;
+}
+
+.stone[data-state="0"] {
+  background: darkgreen;
+  border: darkgreen;
+}
+.stone[data-state="1"] {
+  background: #fff;
+}
+.stone[data-state="2"] {
+  background: #000;
+}
